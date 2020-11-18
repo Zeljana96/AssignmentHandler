@@ -1,0 +1,32 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace Tasks_Handler.Migrations
+{
+    public partial class InitialCreate : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Assignments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AssignmentDescription = table.Column<string>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
+                    Status = table.Column<string>(nullable: true),
+                    Priority = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assignments", x => x.Id);
+                });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Assignments");
+        }
+    }
+}
